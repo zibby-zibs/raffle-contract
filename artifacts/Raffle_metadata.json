@@ -1,0 +1,691 @@
+{
+	"compiler": {
+		"version": "0.8.20+commit.a1b79de6"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_interval",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_entryFee",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_airnodeRrp",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "Raffle_RaffleNotOpen",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "Raffle__TransferFailed",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "Raffle_sendMoreToEnterRaffle",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "player",
+						"type": "address"
+					}
+				],
+				"name": "RaffleEnter",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "requestId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "response",
+						"type": "uint256"
+					}
+				],
+				"name": "ReceivedUint256",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					}
+				],
+				"name": "RequestedRaffleWinner",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "requestId",
+						"type": "bytes32"
+					}
+				],
+				"name": "RequestedUint256",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "timeElapsed",
+						"type": "bool"
+					}
+				],
+				"name": "TimeElapsed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "player",
+						"type": "address"
+					}
+				],
+				"name": "WinnerPicked",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "_qrngUint256",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "airnode",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "airnodeRrp",
+				"outputs": [
+					{
+						"internalType": "contract IAirnodeRrpV0",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_entryFee",
+						"type": "uint256"
+					}
+				],
+				"name": "changeEntryFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_interval",
+						"type": "uint256"
+					}
+				],
+				"name": "changeInterval",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_manager",
+						"type": "address"
+					}
+				],
+				"name": "changeManager",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "checkUpkeep",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "endpointIdUint256",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "enterRaffle",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "numberOfEntries",
+						"type": "uint256"
+					}
+				],
+				"name": "enterRaffleMultipleTimes",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "entryFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "expectingRequestWithIdToBeFulfilled",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "requestId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "fulfillUint256",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getEntryFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getInterval",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getManager",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPlayers",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getRaffleState",
+				"outputs": [
+					{
+						"internalType": "enum Raffle.RaffleState",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTimeAfterOpen",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getWinner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "interval",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lastBlock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lastTime",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lastWinner",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "manager",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nftPrize",
+				"outputs": [
+					{
+						"internalType": "contract IERC721",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nftTokenId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "players",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "recipient",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC721",
+						"name": "_nftPrize",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_nftTokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "setNftPrize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_recipient",
+						"type": "address"
+					}
+				],
+				"name": "setRecipient",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_airnode",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_endpointIdUint256",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "_sponsorWallet",
+						"type": "address"
+					}
+				],
+				"name": "setRequestParameters",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "sponsorWallet",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "winner",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawFees",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"raffle.sol": "Raffle"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@api3/airnode-protocol/contracts/rrp/interfaces/IAirnodeRrpV0.sol": {
+			"keccak256": "0x5306571db1377e8c9dd8cb6e6c7a8deaa2d8ec540e7b2b229e9db5aa5da21277",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3ff47c4fb89e55478d180e6a78049009ef57ba34688c1c454c12a7fd34c6df3a",
+				"dweb:/ipfs/QmQyKgg7mXgcyfnDiaTr5s7JDqFWQY6xbL6M5ajDiJGuwo"
+			]
+		},
+		"@api3/airnode-protocol/contracts/rrp/interfaces/IAuthorizationUtilsV0.sol": {
+			"keccak256": "0x597a40e9911628f6bc1d845c9ebe7c345833e8814caa5ce02a8597d3b4ee7975",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://61c3e2fcf29d5cbc12b86ba82109675d1291def1e26e25982ad12859fe3d3a76",
+				"dweb:/ipfs/QmPtfN5tmTgzGCXyxBQktuWAkxVWsg7Q7F8FB6YJveaDJq"
+			]
+		},
+		"@api3/airnode-protocol/contracts/rrp/interfaces/ITemplateUtilsV0.sol": {
+			"keccak256": "0x4212b264303a78b3c3ed0230cf23b7c3ca58bccec936eccd1d4924347b0fea47",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://eaf9f61c252264854cbdc409692f99d00327ad7ca9cd4bc17f3b0164e4bc8d76",
+				"dweb:/ipfs/QmYWvPeNGjND5kYPTMhU6RJRwgkHWqvYYoN24Lnbjndj8d"
+			]
+		},
+		"@api3/airnode-protocol/contracts/rrp/interfaces/IWithdrawalUtilsV0.sol": {
+			"keccak256": "0x732a3a2447150d8a8097042719ca1faf35e06cbfec364d1d6b17aae254cfd520",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4647ec4eb4c54e4d4a0af973e8804fdd5df0f6c5aa4d70bbeede40ea40bd672b",
+				"dweb:/ipfs/QmSgVM8e6tAvwtWd5Tx9rewsBTpJwFo4J3A2vvQDZZvC9B"
+			]
+		},
+		"@api3/airnode-protocol/contracts/rrp/requesters/RrpRequesterV0.sol": {
+			"keccak256": "0x5a517e7b6e9a3bc7667a44866edbb6db81d8b0fde16325d1d49d1e64494568c8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8504ba05ab2a750ac2ae2bd2925a5fdd82219594b6881ba1d5016b7cde39a99d",
+				"dweb:/ipfs/Qmdk3ACLaQeeW3HNUte2s4HSTNpB3fGDZCfjpmUrDtPGsV"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/IERC721.sol": {
+			"keccak256": "0x5ef46daa3b58ef2702279d514780316efaa952915ee1aa3396f041ee2982b0b4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2f8f2a76e23b02fc69e8cd24c3cb47da6c7af3a2d6c3a382f8ac25c6e094ade7",
+				"dweb:/ipfs/QmPV4ZS4tPVv4mTCf9ejyZ1ai57EEibDRj7mN2ARDCLV5n"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x4296879f55019b23e135000eb36896057e7101fb7fb859c5ef690cf14643757b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://87b3541437c8c443ccd36795e56a338ed12855eec17f8da624511b8d1a7e14df",
+				"dweb:/ipfs/QmeJQCtZrQjtJLr6u7ZHWeH3pBnjtLWzvRrKViAi7UZqxL"
+			]
+		},
+		"raffle.sol": {
+			"keccak256": "0xf72aee06d4b7065b9611f54ee7026b39a6437323adbe30d064f524b8ed7a7bcb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://58659586f248b1e898ee13ae7d76a0e6104a8986524b04bb8d4f40f51b088cd7",
+				"dweb:/ipfs/QmYAdjHZ4GQvXRNcWQTzAy5HHP9RFE1cWjRd9gN4gHqNeQ"
+			]
+		}
+	},
+	"version": 1
+}
